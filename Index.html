@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BSS Business Group | Command Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --wa-bg: #e5ddd5;
+      --wa-header: linear-gradient(135deg, #075e54 0%, #128c7e 100%);
+      --wa-bubble: #ffffff;
+      --wa-user-bubble: #dcf8c6;
+    }
+
+    body { 
+      font-family: 'Segoe UI', Helvetica, Arial, sans-serif; 
+      margin: 0; background: var(--wa-bg); 
+      display: flex; flex-direction: column; height: 100vh; 
+      overflow: hidden;
+    }
+
+    header { 
+      background: var(--wa-header); color: white; padding: 15px; 
+      display: flex; align-items: center; gap: 12px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;
+    }
+
+    #chat-window { 
+      flex: 1; overflow-y: auto; padding: 15px; 
+      display: flex; flex-direction: column; gap: 12px; 
+    }
+
+    .msg { 
+      max-width: 85%; padding: 10px 14px; border-radius: 8px; 
+      font-size: 0.95rem; box-shadow: 0 1px 2px rgba(0,0,0,0.15); 
+      position: relative; line-height: 1.4;
+    }
+
+    .bot { background: var(--wa-bubble); align-self: flex-start; border-top-left-radius: 0; color: #303030; }
+    .user { background: var(--wa-user-bubble); align-self: flex-end; border-top-right-radius: 0; color: #303030; }
+
+    .menu-item { color: #075e54; font-weight: bold; }
+
+    /* Input Pad */
+    .input-pad { 
+      background: #f0f0f0; padding: 12px; display: flex; gap: 10px; 
+      align-items: center; border-top: 1px solid #ddd;
+    }
+
+    #user-input { 
+      flex: 1; padding: 12px 18px; border-radius: 25px; 
+      border: none; outline: none; font-size: 1rem; 
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    #send-btn { 
+      background: #075e54; color: white; border: none; 
+      width: 48px; height: 48px; border-radius: 50%; 
+      cursor: pointer; font-size: 1.2rem; display: flex; 
+      align-items: center; justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div style="width: 42px; height: 42px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🛡️</div>
+    <div>
+      <div style="font-weight: bold; letter-spacing: 0.5px;">BSS Business Group</div>
+      <div style="font-size: 0.7rem; opacity: 0.9;">Project ID: bss-bizgroup-480387776403</div>
+    </div>
+  </header>
+
+  <div id="chat-window">
+    <div class="msg bot">
+      <b>BSS CORE ENGINE v2.2.5 ONLINE</b><br><br>
+      Welcome back, Architect Taiwo Fashola.<br><br>
+      Select a node to activate:<br>
+      <span class="menu-item">1.</span> Registration Portal<br>
+      <span class="menu-item">2.</span> Live Marketplace<br>
+      <span class="menu-item">3.</span> System Diagnostics (Stats)<br>
+      <span class="menu-item">4.</span> Technical Support<br><br>
+      <i>Type a number to begin.</i>
+    </div>
+  </div>
+
+  <div class="input-pad">
+    <input type="text" id="user-input" placeholder="Type a number (0-4)..." autocomplete="off">
+    <button id="send-btn" onclick="processInput()">➤</button>
+  </div>
+
+  <script>
+    // ✅ CLOUD CONFIGURATION
+    const API_URL = "https://bss-bizgroup-api-480387776403.us-central1.a.run.app";
+    const chatWindow = document.getElementById('chat-window
